@@ -1,0 +1,17 @@
+<div>
+  <div class="content-container">
+      <ng-template *ngIf="data.tipo=='log' else success" >
+          <h2 >ERROR</h2>
+      </ng-template>
+      <ng-template #success>
+          <h2  >Exito</h2>
+      </ng-template>
+    
+    <mat-icon id="close-icon" (click)="closeDialog()">close</mat-icon>
+   <!-- <span class="content-span full-width">{{data.message}}</span> -->
+   <span class="content-span full-width">{{data.message}}</span>
+  </div>
+  <button mat-flat-button id="yes-button" [mat-dialog-close]="true">OK</button>
+  <button mat-flat-button id="no-button" [mat-dialog-close]="false">Cerrar</button>
+  
+</div>

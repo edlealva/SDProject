@@ -1,0 +1,108 @@
+<mat-card class="contact-card">
+  <mat-card-header>
+    <mat-card-title>Crear Guia Externa</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form id="contactForm" [formGroup]="FormGuia" (ngSubmit)="obtenerdatos()">
+      <mat-grid-list cols="4" rowHeight=100px [gutterSize]="'50px'">
+        <mat-grid-tile>
+
+          <mat-form-field>
+
+            <input matInput placeholder="Numero de guia" formControlName="numguia" class="form-control" name="numguia">
+
+          </mat-form-field>
+
+
+        </mat-grid-tile>
+        <mat-grid-tile>
+
+          <mat-form-field>
+
+            <input matInput placeholder="ecode" formControlName="ecode" class="form-control" name="ecode">
+
+          </mat-form-field>
+
+
+        </mat-grid-tile>
+        <mat-grid-tile>
+
+          <mat-form-field>
+
+            <input matInput placeholder="DNI" formControlName="dni" for class="form-control" name="dni">
+
+          </mat-form-field>
+
+
+        </mat-grid-tile>
+        <mat-grid-tile>
+
+
+          <mat-form-field>
+
+            <input matInput placeholder="consigna" formControlName="consigna" class="form-control" name="consigna">
+
+          </mat-form-field>
+
+
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+
+          <mat-form-field>
+
+            <input matInput placeholder="piezas" formControlName="piezas" class="form-control" name="piezas">
+
+          </mat-form-field>
+
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+
+          <mat-form-field>
+
+            <input matInput placeholder="peso" formControlName="peso" class="form-control" name="peso">
+
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+
+          <mat-form-field>
+
+            <input matInput placeholder="direccion" formControlName="direccion" class="form-control" name="direccion">
+
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+
+          <mat-form-field>
+
+            <input matInput placeholder="descripcion" formControlName="descripcion" class="form-control"
+              name="descripcion">
+
+          </mat-form-field>
+        </mat-grid-tile>
+      </mat-grid-list>
+
+
+
+
+
+
+
+      <button id="btnSubmit" mat-raised-button type="submit" color="primary">Crear Guia</button>
+      <input type="file" style="display: inline-block;" (change)="incomingfile($event)" placeholder="Upload file"
+        accept=".xlsx">
+      <button type="button" class="btn btn-info" (click)="Upload()">Subir archivo</button>
+
+
+
+    </form>
+    <br>
+    <a href="assets/docs/formato-guias.xlsx" download>
+      <button>Descargar formato</button>
+    </a>
+  </mat-card-content>
+</mat-card>

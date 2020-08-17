@@ -1,0 +1,64 @@
+<mat-card class="contact-card">
+  <mat-card-header>
+    <mat-card-title>Crear Combo</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form id="contactForm" [formGroup]="FormCombo" (ngSubmit)="crearcombo()">
+      <mat-grid-list cols="4" rowHeight=100px [gutterSize]="'50px'">
+        <mat-grid-tile>
+          <mat-form-field>
+            <input matInput placeholder="Descripcion" formControlName="descripcion" class="form-control" name="descripcion">
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <mat-form-field>
+            <input matInput placeholder="Precio" formControlName="precio" class="form-control" name="precio">
+          </mat-form-field>
+        </mat-grid-tile>   
+      </mat-grid-list>
+      <button id="btnSubmit" mat-raised-button type="submit" color="primary">Crear Combo</button>
+    </form>
+    <br>
+  </mat-card-content>
+  <br>
+  <mat-card-header>
+    <mat-card-title>Actualizar Combo</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form id="contactForm" [formGroup]="FormComboUpdate" (ngSubmit)="actualizarcombo()">
+      <mat-grid-list cols="4" rowHeight=100px [gutterSize]="'50px'">
+        <mat-grid-tile>
+          <mat-form-field>
+            <input matInput placeholder="Descripcion" formControlName="descripcion" class="form-control" name="descripcion">
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <mat-form-field>
+            <input matInput placeholder="Precio" formControlName="precio" class="form-control" name="precio">
+          </mat-form-field>
+        </mat-grid-tile>   
+      </mat-grid-list>
+      <button id="btnSubmit" mat-raised-button type="submit" color="primary">Actualizar Combo</button>
+    </form>
+    <br>
+  </mat-card-content>
+  <mat-card-header>
+    <mat-card-title>Eliminar Combo</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form id="contactForm" [formGroup]="FormComboDelete" (ngSubmit)="eliminarcombo()">
+      <mat-grid-list cols="4" rowHeight=100px [gutterSize]="'50px'">
+        <mat-grid-tile>
+          <mat-form-field>
+            <input matInput placeholder="Descripcion" formControlName="descripcion" class="form-control" name="descripcion">
+          </mat-form-field>
+        </mat-grid-tile>
+          
+      </mat-grid-list>
+      <button id="btnSubmit" mat-raised-button type="submit" color="primary">Eliminar Combo</button>
+    </form>
+    <br>
+  </mat-card-content>
+</mat-card>
+<br>
+

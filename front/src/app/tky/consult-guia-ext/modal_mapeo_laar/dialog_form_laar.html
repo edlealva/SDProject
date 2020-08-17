@@ -1,0 +1,188 @@
+<mat-card class="card">
+  <mat-card-header>
+    <mat-card-title>Registro de Guias en Proveedores Courier: Laar Courier</mat-card-title>
+    <!-- <mat-card-subtitle></mat-card-subtitle> -->
+  </mat-card-header>
+  <mat-divider></mat-divider>
+
+  <mat-card-content>
+    <mat-vertical-stepper [linear]="isLinear" #stepper>
+      <mat-step [stepControl]="generalForm">
+        <form [formGroup]="generalForm">
+          <ng-template matStepLabel>Informacion General</ng-template>
+          <div class="form-container">
+            <mat-form-field appearance="outline">
+              <input matInput type="text" placeholder="Numero de la guia" formControlName="guia_externa"
+                id="guia_externa" />
+
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Tipo de Servicio*</mat-label>
+              <mat-select [(ngModel)]="selectService" formControlName="servicios_laar" id="servicios_laar">
+                <mat-option *ngFor="let servicio of servicios" [value]="servicio.codigo">
+                  {{ servicio.nombre }}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="hasError(0,'servicios_laar', 'required')">Tipo de Servicio is required</mat-error>
+            </mat-form-field>
+
+
+            <!-- <mat-form-field>
+              <mat-label>Por cobrar al Destinatario</mat-label>
+              <mat-select [(ngModel)]="selectCod" id="cod" formControlName="cod">
+                <mat-option value="SI">SI</mat-option>
+                <mat-option value="NO">NO</mat-option>
+
+              </mat-select>
+
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label>Tipo de Cobro</mat-label>
+              <mat-select [(ngModel)]="selectTC" id="tipocobro" [disabled]="selectCod==='NO'"
+                formControlName="tipocobro">
+                <mat-option value=0>Efectivo</mat-option>
+                <mat-option value=1>Tarjeta</mat-option>
+
+              </mat-select>
+
+            </mat-form-field>
+
+
+            <mat-form-field>
+              <input matInput type="text" placeholder="Costo del Flete" id="costoflete" formControlName="costoflete"
+                [readonly]="selectCod==='NO'" />
+              <mat-error *ngIf="hasError(0,'costoflete', 'pattern')">Costo del Flete no valido</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput type="text" placeholder="Costo del Producto" id="costoproducto"
+                formControlName="costoproducto" [readonly]="selectCod==='NO'" />
+              <mat-error *ngIf="hasError(0,'costoproducto', 'pattern')">Costo del Producto no valido</mat-error>
+            </mat-form-field> -->
+
+
+          </div>
+        </form>
+        <div align="right">
+
+          <button mat-button matStepperNext [disabled]="!generalForm.valid">Siguiente</button>
+        </div>
+
+      </mat-step>
+
+
+      <mat-step [stepControl]="destForm">
+        <form [formGroup]="destForm">
+          <ng-template matStepLabel>Informacion del Destinatario</ng-template>
+          <div class="form-container">
+            <mat-form-field appearance="outline">
+              <input matInput type="text" placeholder="Identificacion" formControlName="identificacion"
+                id="identificacion" />
+
+
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <input matInput type="text" placeholder="Direccion*" formControlName="address" id="address" />
+
+              <mat-error *ngIf="hasError(1,'address', 'required')">Address is required</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Ciudades*</mat-label>
+              <mat-select [(ngModel)]="selectCiudad" formControlName="ciudades_laar" id="ciudades_laar">
+                <mat-option *ngFor="let ciudad of ciudades" [value]="ciudad.codigo">
+                  {{ ciudad.nombre }}
+                </mat-option>
+              </mat-select> 
+              <mat-error *ngIf="hasError(1,'ciudades_laar', 'required')">Ciudad is required</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline"> 
+              <input matInput type="text" placeholder="Codigo Postal" Name="postal" id="postal"
+                formControlName="postal" />
+
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <input matInput type="tel" placeholder="Celular*" Name="celular" id="celular" formControlName="celular" />
+              <mat-error *ngIf="hasError(1,'celular', 'required')">celular is required</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <input matInput type="text" placeholder="Numero de Casa" id="numerocasa" formControlName="numerocasa" />
+
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <input matInput type="text" placeholder="Referencia" formControlName="referencia" id="referencia" />
+
+            </mat-form-field>
+
+          </div>
+
+
+
+        </form>
+        <div align="right">
+          <button mat-button matStepperPrevious>Atras</button>
+          <button mat-button matStepperNext [disabled]="!destForm.valid">Siguiente</button>
+        </div>
+
+      </mat-step>
+
+      <mat-step [stepControl]="cargaForm">
+        <form [formGroup]="cargaForm" (submit)="crearMapeo()">
+          <ng-template matStepLabel>Informacion de la Carga</ng-template>
+          <div class="form-container2">
+
+            <mat-form-field appearance="outline">
+              <mat-label>Tamaño de Carga*</mat-label>
+              <mat-select [(ngModel)]="selectTamCarg" formControlName="tamcargclt" id="tamcargclt">
+                <mat-option *ngFor="let val of tamcarga" [value]="val">
+                  {{val}}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="hasError(2,'tamcargclt', 'required')">Tamaño de Carga is required</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <input matInput type="text" placeholder="Peso de Carga*" formControlName="pesocarga" id="pesocarga" />
+              <mat-error *ngIf="hasError(2,'pesocarga', 'required')">Peso is required</mat-error>
+              <mat-error *ngIf="hasError(2,'pesocarga', 'pattern')">Peso no valido</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <input matInput type="text" placeholder="Numero de Piezas*" formControlName="piezas" id="piezas" />
+              <mat-error *ngIf="hasError(2,'piezas', 'required')">Numero de Piezas is required</mat-error>
+              <mat-error *ngIf="hasError(2,'piezas', 'pattern')">Numero de Piezas no valido</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <input matInput type="text" placeholder="Valor Declarado" formControlName="valdeclarado"
+                id="valdeclarado" />
+
+
+            </mat-form-field>
+          </div>
+          <mat-form-field class="areatxt" appearance="outline">
+            <textarea matInput placeholder="Descripcion de Carga" formControlName="descripcarga"
+              id="descripcarga"></textarea>
+            <mat-error *ngIf="hasError(2,'descripcarga', 'required')">Descripcion is required</mat-error>
+          </mat-form-field>
+          <div align="right" appearance="outline">
+            <button mat-button matStepperPrevious>Atras</button>
+
+            <button mat-button (click)="stepper.reset()">Reset</button>
+
+
+            <button mat-button (click)="onCloseClick()">Cancelar</button>
+            <button mat-button [disabled]="!(destForm.valid && generalForm.valid && cargaForm.valid )"
+              type="submit">Mapear Guia</button>
+
+              
+          </div>
+        </form>
+      </mat-step>
+    </mat-vertical-stepper>
+  </mat-card-content>
+
+</mat-card>
+<!-- https://code-maze.com/angular-material-form-validation/ -->

@@ -1,0 +1,51 @@
+
+  
+  .mat-form-field {
+    font-size: 19px;
+    width: 100%;
+  }
+  
+  td, th {
+    
+    width: 11%;
+  }
+  table {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    min-width: 500px;
+    // margin: 5px;
+}
+ 
+th.mat-header-cell {
+    text-align: left;
+    max-width: 300px;
+}
+.left{
+  text-align: center;
+  right: 3px;
+}
+h1{
+  text-align: center;
+}
+.mat-card,.mat-card-content,.mat-card-title{
+  width: 100%;;
+}
+.mat-card-title{
+  text-align: center;
+}
+// .search-form-field{
+//   width: 35%;
+// }
+
+.container-flex{
+  display: flex;
+    // flex-direction: row;
+  flex-wrap: wrap;
+  align-content:space-between !important;
+}
+
+.container-flex>*{
+  width: 40%;
+
+}

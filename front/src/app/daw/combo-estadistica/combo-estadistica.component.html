@@ -1,0 +1,120 @@
+<script src="https://d3js.org/d3.v3.min.js"></script>
+<body>
+<div class = "graph" id="Combo"></div>
+<script type="text/javascript"></script>
+
+<script>
+var margin  = {top: 20, right: 20, bottom: 100, left: 60},
+        width   = 600 - margin.left - margin.right,
+        height  = 400 - margin.top - margin.bottom,
+        x       = d3.scale.ordinal().rangeRoundBands([0,width], 0.5),
+        y       = d3.scale.linear().range([height,0]);
+
+var xAxis   = d3.svg.axis()
+        .scale(x)
+        .orient("bottom");
+var yAxis   = d3.svg.axis()
+    .scale(y)
+    .orient("left")
+    .ticks(5)
+    .innerTickSize(-width)
+    .outerTickSize(0)
+    .tickPadding(10);
+
+var svg     = d3.select("#Combo")
+        .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+
+
+d3.json("http://localhost:8000/apidb/Combo/", function(data)
+    {
+
+        x.domain((data.results).map(function (d)
+        {
+
+            return d.Descripcion;
+            console.log(d);
+        }));
+
+        y.domain([0, d3.max(data.results, function (d)
+        {
+            return d.Precio;
+        })]);
+
+        svg.append("g")
+            .attr("class", "x axis")
+            .attr("transform", "translate(0, " + height + ")")
+            .call(xAxis)
+            .selectAll("text")
+            .style("text-anchor", "middle")
+            .attr("dx", "-0.5em")
+            .attr("dy", "-.55em")
+            .attr("y", 30)
+            .attr("transform", "rotate(0)" );
+
+        svg.append("g")
+            .attr("class", "y axis")
+            .call(yAxis)
+            .append("text")
+            .attr("transform", "rotate(-90)")
+            .attr("y", 5)
+            .attr("dy", "0.8em")
+            .attr("text-anchor", "end")
+            .text("Word Count");
+
+        svg.selectAll("bar")
+            .data(data.results)
+            .enter()
+            .append("rect")
+            .style("fill", "orange")
+            .attr("x", function(d)
+            {
+                return x(d.Descripcion);
+            })
+            .attr("width", x.rangeBand())
+            .attr("y", function (d)
+            {
+                return y(d.Precio);
+            })
+            .attr("height", function (d)
+            {
+                return height - y(d.Precio);
+            });
+     });
+
+
+</script>
+
+<style>
+      svg {
+            border: 1px solid #000;
+        }
+        body, html {
+        width: 100%;
+        height: 100%;
+        margin: 0 auto;
+        }
+
+        .graph {
+            width: auto;
+        }
+
+        .tooltip {
+            text-decoration: underline;
+        }
+
+        .axis {
+            font: 10px Georgia, Arial, sans-serif;
+        }
+
+        .axis path, .axis line {
+            fill: none;
+            stroke: #dadada;
+            shape-rendering: crispEdges;
+        }
+</style>
+</body>
