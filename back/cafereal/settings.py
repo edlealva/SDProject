@@ -24,9 +24,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '#adm0#g@2#s733yhnf6&vgoa3!jl6ir%cd1ewmud(t-!n+(=@('
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
@@ -45,11 +45,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cafereal',
     'rest_framework',
     'rest_framework.authtoken',
     'rest_auth',
     'corsheaders',
     'martor',
+
 
 ]
 CORS_ORIGIN_ALLOW_ALL = True
@@ -137,5 +139,6 @@ CORS_ORIGIN_ALLOW_ALL = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT='/code/static/'
 MEDIA_URL  =  '/media/'
 MEDIA_ROOT  =  os.path.join(BASE_DIR,  'media')
