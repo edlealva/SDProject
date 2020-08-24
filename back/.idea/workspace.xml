@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c2f915c9-7f55-4b1f-9f56-a7eaff7dea55" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/gunicorn/conf.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/nginx/conf.d/local.conf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker-compose.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myapp/testPosts.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cafereal/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/cafereal/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-    </list>
+    <list default="true" id="c2f915c9-7f55-4b1f-9f56-a7eaff7dea55" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -218,7 +209,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="863" y="86" width="784" height="684" extended-state="0" />
+    <frame x="505" y="69" width="784" height="684" extended-state="0" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2603306" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
