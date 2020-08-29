@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-version: "3"
+version: "2.4"
 
 services:
 
@@ -9,13 +9,16 @@ services:
       - .:/opt/services/djangoapp/src
     networks:
       - nginx_network
-
+    mem_limit: 20m
+    
 
 
   nginx:
     image: nginx:1.13
     ports:
       - 8000:80
+    mem_limit: 20m
+    
     volumes:
       - ./config/nginx/conf.d:/etc/nginx/conf.d
       - static:/code/static
